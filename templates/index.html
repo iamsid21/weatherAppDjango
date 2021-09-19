@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}| Homie {% endblock title %}
+{% block body %}
+
+
+<div class="content_wrapper" id="app">
+    <div v-if="infos.city">
+        <h1>
+            Weather
+            <div class="date"> </div>
+        </h1>
+        <div class="form-con">
+            <form method="GET">
+                <label for="exampleInputEmail1" class="form-label">Enter City</label>
+                <input type="form-control" name="city" class="form-control" id="exampleInputEmail1"
+                    aria-describedby="emailHelp">
+
+                <button class="btn" type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="weather_card">
+            <div class="weather_card_img"
+                :style="{backgroundImage: https://openweathermap.org/img/wn/{{data.icon}}.png}">
+                <div class="weather_card_state">
+                    <span class="material-icons">
+                        <img src="https://openweathermap.org/img/wn/{{data.icon}}.png" alt="">
+                    </span>
+                </div>
+            </div>
+
+            <div class="weather_card_infos">
+                <div class="weather_card_infos_title">
+                    {{data.city}},
+                    {{data.desc}}
+                </div>
+                <div class="weather_card_infos_temp">
+                    {{data.Celcius_temperature}}°C / {{data.faren_temperature}}°F
+                </div>
+                <div class="bottom">
+                    <div class="weather_card_infos_bottom">
+                        Humidity: {{data.humidity}} - Pressure: {{data.pressure}} Pa
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock body %}
